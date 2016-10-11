@@ -1,0 +1,10 @@
+<div class="productsContainer">
+<div class="page-header" ng-show="cat.loading"><h1><img src="images/cargando.gif"></h1></div>
+	<h3>Categorias  <span class="glyphicon glyphicon-tags" aria-hidden="true" > </span></h3>
+
+	<div class="content">
+		<rz-input type="text" name="categoria" id="categoria" label="Categoria" ng-model="cat.categoria.nombre" add-on="true" add-name="Agregar" add-func="cat.addCat"></rz-input>
+		<div class="tagsList"><div class="col-sm-3 col-md-2 tags" ng-repeat="categoria in cat.categorias">{[categoria.nombre]}<span class="glyphicon glyphicon-pencil editBtn" aria-hidden="true" ng-click="cat.editCategory(categoria)"></span>  <span class="glyphicon glyphicon-trash delBtn" aria-hidden="true" ng-click="cat.deleteCategory(categoria)"></span></div></div>
+	</div>
+
+</div>

@@ -1,0 +1,195 @@
+$color: #3f51b5;
+$color2: #f44336;
+$color3: #4caf50;
+
+
+.tab-content{
+  display: flex;
+  max-height: 98%;
+
+
+  .rzExpandMain {
+      box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.4);
+      display: none;
+
+      &.visible {
+        flex:1;
+        overflow: auto;
+        display: block;
+        padding-bottom:100px;
+      }
+    .rzExpandContainer {
+      position:relative;
+      width: 100%;
+      padding-bottom: 100%;
+      .rzExpand {
+        position:absolute;
+        width: 100%;
+        right: 2.2%;
+        form {
+          opacity: 0;
+        }
+        &.visible form  {
+          animation-name: fade;
+          animation-fill-mode: forwards;
+          animation-duration: 1.5s;
+          display: block;
+         }
+         &.visible{
+          animation-name: slide;
+          display: block;
+          animation-duration: 1.4s;
+          animation-fill-mode: forwards;
+          padding: 15px 30px;
+
+          
+        }
+        &.hiddenn {
+          animation-name: slideOut;
+          animation-duration: 1s;
+          animation-fill-mode: forwards;
+
+        }
+        &.hiddenn form  {
+          animation-name: fadeOut;
+          animation-delay: 1.2s;
+          animation-duration: 0.3s;
+          animation-fill-mode: forwards;
+         }
+      }
+    }
+  }
+
+  .listContent {
+    flex:1;
+    display: none;
+    &.visible {
+      display: block;
+    }
+  }
+}
+
+.rzTabs {
+  background-color:$color;
+  padding:10px 10px;
+  position:relative;
+  
+  .rzTab {
+     text-align: center;
+    a {
+      color:#fff;
+      background-color:transparent;
+      border:none;
+      font-size: 15px;
+      text-decoration: none;
+      padding: 12px 35px;
+
+    }
+  }
+  li {
+    a {
+      color:#fff;
+      background-color:transparent;
+    }
+  }
+  .tabBar {
+    position: absolute;
+    background-color:#ffff8d;
+    height: 2px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+    transform: translate3d(0%, 0px, 0px) scaleX(0.333333);
+    -webkit-transform-origin: left center;
+    transform-origin: left center;
+    transition: -webkit-transform;
+    transition: transform;
+    transition-duration: 0.18s;
+    transition-timing-function: cubic-bezier(0.4, 0.0, 1, 1);
+  }
+}
+
+.list-group-item{
+
+  &:hover {
+
+    .delBtn {
+      display: block;
+    }
+
+  }
+
+  .delBtn {
+    position: absolute;
+    top: 20%;
+    right: 5%;
+    font-size: 24px;
+    display: none;
+    z-index: 1001;
+}
+
+
+}
+
+
+
+@keyframes fade {
+
+  0%{
+    opacity: 0;
+  }
+  100% {
+     opacity: 1;
+  }
+ }
+
+ @keyframes fadeOut {
+
+  0%{
+    opacity: 0.1;
+  }
+  100% {
+     opacity: 0;
+  }
+ }
+
+@keyframes slide {
+
+  0%{
+    height: 0%;
+    background-color: #EFEFEF;
+    opacity: 1;
+  }
+  10% {
+    z-index:200;
+  }
+  100% {
+    opacity: 1;
+     background-color: #EFEFEF;
+     height: 100%;
+     z-index:200;
+     padding-bottom:30px;
+  }
+ }
+
+ @keyframes slideOut {
+
+  0%{
+    height: 100%;
+    background-color: #EFEFEF;
+    
+    z-index: 200;
+  }
+  99% {
+     background-color: #EFEFEF;
+     height: 0%;
+     opacity: 1;
+      z-index: 200;
+     
+  }
+  100% {
+    z-index: 0;
+  }
+ }

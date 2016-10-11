@@ -1,0 +1,67 @@
+<div class="productsContainer">	
+	<div class="page-header" ng-show="admin.loading"><h1><img src="images/cargando.gif"></h1></div>	
+	<h3>Administrador</h3>
+	<div class=" rzTabs" role="tablist">
+		    <div class="row">
+			    <div role="presentation"  class="col-xs-4 col-xs-offset-4 rzTab" ><a role="tab">Usuarios</a></div>
+			    <div class="tabBar"></div>
+			    </div>
+		  </div>
+
+
+		  <div class="tab-content">
+					<div class="rzExpandMain" ng-class="{'visible':admin.prodState != '' && admin.prodState}">
+				    	<div class="rzExpandContainer">
+				    		<div class="rzExpand" ng-class="{'visible':admin.prodState != '' && admin.prodState, 'hiddenn': admin.prodState == '' }">
+				    		<a ng-click="admin.back()">Atras</a>
+				    		<form name="addForm" ng-if="admin.prodState == 'add'">
+				    		<rz-input type="text" name="name" id="name" label="Nombre" ng-model="admin.newUser.name" ng-required="true"  error="addForm.name.$error.required" ></rz-input>
+				    			<rz-textarea name="descripcion" id="descripcion" label="Descripcion" ng-model="admin.newUser.user_metadata.descripcion" ng-required="false"  error="addForm.descripcion.$error.required"  rows="3"></rz-textarea>
+				    			<rz-input type="email" name="email" id="email" label="Correo" ng-model="admin.newUser.email" ng-required="true"  error="addForm.email.$error.required"  ></rz-input>
+				    			<rz-input type="text" name="password" id="password" label="Contraseña" ng-model="admin.newUser.password" ng-required="true"  error="addForm.password.$error.required" ></rz-input>
+				    			
+				    		</form>
+				    		<form name="editForm" ng-if="admin.prodState == 'edit'">
+				    		
+					    		<section class="gsProducts">
+					    			<h3>Información General</h3>
+					    			<rz-input type="email" name="email" id="email" label="Correo" ng-model="admin.newUser.email" ng-required="true"  error="editForm.email.$error.required"  ></rz-input>
+				    			<rz-textarea name="descripcion" id="descripcion" label="Descripcion" ng-model="admin.newUser.user_metadata.descripcion" ng-required="false"  error="editForm.descripcion.$error.required"  rows="3"></rz-textarea>
+				    			
+
+				    			</section>
+				    			<section class="userPassword">
+					    			<button ng-click="changePass = 'change'" class="btn btn-primary">Cambiar Contraseña</button>
+
+					    			<rz-input ng-if="changePass == 'change'" type="text" name="password" id="password" label="Contraseña" ng-model="admin.newUser.password" ng-required="false"  error="editForm.password.$error.required" ></rz-input>
+
+
+					    			
+				    			</section>
+				    		</form>
+					    		
+
+				    		</div>
+				    	</div>
+				    </div>
+				    <div class="listContent" ng-class="{'visible':admin.prodState == '' || admin.prodState === undefined}">
+						  <a href="#/admin" class="list-group-item" ng-repeat="user in admin.users" id="{[user.user_id]}" >
+							  <div class="row" ng-click="admin.editUser(user)">
+								  <div class="col-sm-2" ng-if="user.image"><img class="productImg" ng-src="{[user.image]}"></div>
+								  <div class="col-sm-5"><h4 class="list-group-item-heading">{[user.name]}</h4></div>
+								   <div class="col-sm-5"><p class="list-group-item-text">{[user.email]}</p></div>
+							   </div>
+							   <span class="glyphicon glyphicon-trash delBtn" aria-hidden="true" ng-click="admin.deleteUser(user)"></span>
+						    
+						    
+						  </a>
+				    </div>
+		  </div>
+</div>
+
+
+<div class="plusWrapper">
+	<button class="btn btn-info plus show" ng-click="admin.prodState = 'add' " ng-if="!admin.prodState || admin.prodState == ''"><img class="img-responsive plusImg" src="images/mas.png"></button>
+	<button  class="btn btn-info plus add" ng-click="admin.addUser()" ng-if="admin.prodState == 'add'" ng-disabled='addForm.$invalid'><img class="img-responsive plusImg" src="images/mas.png" ></button>
+	<button  class="btn btn-info plus edit" ng-click="admin.saveUser()" ng-if="admin.prodState == 'edit'" ng-disabled='editForm.$invalid'><img class="img-responsive plusImg" src="images/mas.png"></button>
+</div>

@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/vagrant/casabombillobackend":{"type":null,"mount_options":[],"guestpath":"/home/vagrant/casabombillobackend","hostpath":"/home/daniel/projects/casaBombilloBackend","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/home/daniel/projects/casaBombilloBackend","disabled":false,"__vagrantfile":true}}}

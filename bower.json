@@ -1,0 +1,27 @@
+{
+  "name": "casaBombilloBackend",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Daneil Ruiz <gerencia@ruizoft.com>"
+  ],
+  "license": "MIT",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-ui-router": "^0.3.1",
+    "angular-upload": "^1.0.12",
+    "IDB": "idb#^1.0.1",
+    "angular-trix": "^1.0.2",
+    "froala-editor": "*",
+    "angular-froala": "^2.3.4"
+  }
+}
